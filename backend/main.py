@@ -6,6 +6,7 @@ from sqlmodel import select
 
 from backend.database import create_db_and_tables
 from backend.dependencies import SessionDep
+from backend.models import Group, SupervisorUserBase, User
 
 
 async def lifespan(app: FastAPI):
@@ -28,15 +29,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+    
 @app.get("/")
 async def read_root():
     return {"Hello": "World"}
 
-# @app.get("/heroes/")
-# async def read_heroes(
-#     session: SessionDep,
-#     offset: int = 0,
-#     limit: Annotated[int, Query(le=100)] = 100,
-# ) -> list[Hero]:
-#     heroes = session.exec(select(Hero).offset(offset).limit(limit)).all()
-#     return heroes
+
+class SupervisorUserResponse(SupervisorUserBase):
+    user: User
+    
+@app.get("/groups/{group_id}/supervisors", response_model=list[SupervisorUserResponse])
+async def read_root(
+    session: SessionDep,
+    group_id: int
+):
+    statement = select(Group).where(Group.id == group_id)
+    result = session.exec(statement)
+    group = result.one()
+      
+    return group.supervisors
