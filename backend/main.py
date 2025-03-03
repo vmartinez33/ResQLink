@@ -14,9 +14,6 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="ResQLink API",
-    openapi_url="/resqlink/api/openapi.json",
-    docs_url="/resqlink/api/docs",
-    redoc_url="/resqlink/api/redoc",
     root_path="/resqlink/api",
     lifespan=lifespan
 )
