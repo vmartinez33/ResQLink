@@ -1,6 +1,4 @@
-from typing import Annotated
-
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import select
 
@@ -14,7 +12,12 @@ async def lifespan(app: FastAPI):
     yield
     # clean up code goes here
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    prefix="/resqlink/api",
+    docs_url="/resqlink/api/docs",
+    openapi_url="/resqlink/api/openapi.json",
+    lifespan=lifespan
+)
 
 origins = [
     "http://localhost",
