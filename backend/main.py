@@ -1,9 +1,15 @@
 import sqlite3
 import math
 import unittest
+ 
+from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
+from sqlmodel import select
 
+ 
 # Database file path
 DB_FILE = 'datos/Points_Along_Line.sqlite'
+
 
 def connect_database():
     """Connects correctyl to the SQLite database ."""
@@ -12,7 +18,7 @@ def connect_database():
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM interpolated_points;")
             rows = cursor.fetchall()
-
+ 
             if not rows:
                 print("No records found in the 'interpolated_points' table.")
                 return
@@ -26,6 +32,7 @@ def connect_database():
                     print(f"Skipping invalid coordinate data: {row[3]}")
     except sqlite3.Error as e:
         print(f"Database error: {e}")
+ 
 
 def euclidean_distance(p1, p2):
     """Computes the Euclidean distance between two points."""
@@ -35,9 +42,28 @@ def is_route_within_limit(route, max_distance):
     """Checks if the distance between consecutive points in a route is within the allowed limit."""
     return all(euclidean_distance(route[i], route[i + 1]) <= max_distance for i in range(len(route) - 1))
 
+ 
 def is_point_within_perimeter(point, route, perimeter):
     """Determines if a given point falls within the allowed perimeter of any point in the route."""
     return any(euclidean_distance(point, route_point) <= perimeter for route_point in route)
+
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}
+ 
 
 def check_point_on_route(point, route, max_distance, perimeter, return_message=False):
     """Validates if a point is inside the route perimeter and if the route follows distance constraints.
