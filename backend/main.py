@@ -7,7 +7,6 @@ from sqlmodel import select
 from backend.database import create_db_and_tables
 from backend.dependencies import SessionDep
 
-# from backend.models import Hero
 
 async def lifespan(app: FastAPI):
     create_db_and_tables()
