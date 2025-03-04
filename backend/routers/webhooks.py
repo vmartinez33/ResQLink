@@ -20,7 +20,8 @@ async def recive_notification(
         if "connectivity-disconnected" in notification.type:
             send_telegram_notification("Device disconnected from the network")
         elif "connectivity-data" in notification.type:
-            send_telegram_notification("Device connected to the network")
+            # send_telegram_notification("Device connected to the network")
+            pass
         
         return {"status": "ok"}
     else:
