@@ -1,5 +1,5 @@
-from typing import Annotated, Optional
-from fastapi import APIRouter, Header, Request
+import os
+from fastapi import APIRouter, Header, Response
 
 from backend.nac import Notification
 
@@ -16,4 +16,7 @@ async def recive_notification(
 ):
     print(authorization)
     print(notification.model_dump_json())
-    return {"status": "ok"}
+    if authorization == "Bearer " + os.getenv("AUTHORIZATION_TOKEN"):
+        return {"status": "ok"}
+    else:
+        return Response(status_code=401)

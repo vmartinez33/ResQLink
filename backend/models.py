@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from typing import Optional
 from sqlmodel import Field, Relationship, SQLModel
 
+
 class GroupSupervisor(SQLModel, table=True):
     __tablename__ = "group_supervisor"
 
