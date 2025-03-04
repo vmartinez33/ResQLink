@@ -48,8 +48,8 @@ async def get_location(
     
     my_device = client.devices.get(phone_number="+34659197711")
     result = my_device.verify_location(
-        longitude=2.1485395,
-        latitude=41.3643733,
+        longitude=2.1607308,
+        latitude=41.3753712,
         radius=area.radius,
         max_age=3600
     )
