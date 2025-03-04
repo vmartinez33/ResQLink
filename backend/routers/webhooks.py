@@ -2,6 +2,7 @@ import os
 from fastapi import APIRouter, Header, Response
 
 from backend.nac import Notification
+from telegram import send_telegram_notification
 
 router = APIRouter(
     prefix="/webhooks",
@@ -14,9 +15,14 @@ async def recive_notification(
     notification: Notification,
     authorization: str = Header(None)
 ):
-    print(authorization)
     print(notification.model_dump_json())
     if authorization == "Bearer " + os.getenv("AUTHORIZATION_TOKEN"):
+        if "connectivity-disconnected" in notification.type:
+            send_telegram_notification("Device disconnected from the network")
+        elif "connectivity-data" in notification.type:
+            # send_telegram_notification("Device connected to the network")
+            pass
+        
         return {"status": "ok"}
     else:
         return Response(status_code=401)
