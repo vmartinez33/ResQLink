@@ -1,0 +1,162 @@
+{
+	"alerts": [
+		{
+			"id": 1,
+			"type": "Emergency",
+			"description": "User has fallen",
+			"status": "Pending",
+			"priority": "High",
+			"date": "2025-03-03T14:30:00Z"
+		},
+		{
+			"id": 2,
+			"type": "Medical",
+			"description": "User is experiencing chest pain",
+			"status": "In Progress",
+			"priority": "Critical",
+			"date": "2025-03-03T15:10:00Z"
+		},
+		{
+			"id": 3,
+			"type": "Fire",
+			"description": "Fire detected in user’s home",
+			"status": "Resolved",
+			"priority": "Critical",
+			"date": "2025-03-03T12:45:00Z"
+		},
+		{
+			"id": 4,
+			"type": "Security",
+			"description": "User triggered panic button",
+			"status": "Pending",
+			"priority": "High",
+			"date": "2025-03-03T16:20:00Z"
+		},
+		{
+			"id": 5,
+			"type": "Medical",
+			"description": "User is unresponsive",
+			"status": "Critical",
+			"priority": "Critical",
+			"date": "2025-03-03T17:00:00Z"
+		},
+		{
+			"id": 6,
+			"type": "Accident",
+			"description": "User involved in a car crash",
+			"status": "In Progress",
+			"priority": "High",
+			"date": "2025-03-03T13:40:00Z"
+		},
+		{
+			"id": 7,
+			"type": "Missing Person",
+			"description": "Elderly user has wandered away from home",
+			"status": "Pending",
+			"priority": "Medium",
+			"date": "2025-03-03T18:30:00Z"
+		},
+		{
+			"id": 8,
+			"type": "Technical",
+			"description": "User’s medical alert device is malfunctioning",
+			"status": "Resolved",
+			"priority": "Low",
+			"date": "2025-03-03T10:15:00Z"
+		},
+		{
+			"id": 9,
+			"type": "Flood",
+			"description": "User's house is flooding",
+			"status": "In Progress",
+			"priority": "Critical",
+			"date": "2025-03-03T19:50:00Z"
+		},
+		{
+			"id": 10,
+			"type": "Earthquake",
+			"description": "User reported severe shaking",
+			"status": "Pending",
+			"priority": "Critical",
+			"date": "2025-03-03T20:05:00Z"
+		},
+		{
+			"id": "a40b",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:33:07.425Z"
+		},
+		{
+			"id": "7d03",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:33:27.401Z"
+		},
+		{
+			"id": "eb76",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:33:33.938Z"
+		},
+		{
+			"id": "7406",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:35:15.411Z"
+		},
+		{
+			"id": "d2ff",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:35:16.978Z"
+		},
+		{
+			"id": "7c3a",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:35:44.009Z"
+		},
+		{
+			"id": "a362",
+			"user_id": 2134,
+			"longitude": 41.3564928,
+			"latitude": 1.703936,
+			"alert_type": "medium_priority",
+			"alert_message": null,
+			"created_at": "2025-03-04T03:35:48.701Z"
+		}
+	],
+	"users": [
+		{
+			"id": 1234,
+			"username": "dario",
+			"password": "test",
+			"role": "supervisor"
+		},
+		{
+			"id": 2134,
+			"username": "test_user",
+			"password": "test",
+			"role": "user",
+			"image": "https://i.pravatar.cc/300?img=55"
+		}
+	]
+}
