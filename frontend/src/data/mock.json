@@ -1,0 +1,608 @@
+{
+	"id": 1,
+	"name": "Fundación Ayuda",
+	"country": "Spain",
+	"phone": "+34 600 123 456",
+	"groups": [
+		{
+			"id": 1,
+			"name": "Group A",
+			"users": [
+				{
+					"user_id": "2134",
+					"name": "test_user",
+					"roles": ["Tracked"],
+					"supervisors_id": [2, 3],
+					"representatives_id": [4],
+					"location": { "latitude": 41.39538, "longitude": 2.16403 },
+					"network_status": "OK",
+					"connection_type": "4G",
+					"last_connection": "2025-03-03T14:30:00Z",
+					"last_location_updated": "2025-03-03T14:29:50Z",
+					"Observations": "",
+					"image": "https://i.pravatar.cc/300?img=55",
+					"trust_zone": {
+						"name": "Home",
+						"coordinates": { "latitude": 41.39538, "longitude": 2.16403 },
+						"radius_meters": 600
+					},
+					"usual_routes": [
+						{
+							"id": 101,
+							"name": "Home-Work Route",
+							"coordinates": [
+								{
+									"latitude": 41.40338,
+									"longitude": 2.17403,
+									"timestamp": "2025-03-03T08:00:00Z"
+								},
+								{
+									"latitude": 41.40538,
+									"longitude": 2.17203,
+									"timestamp": "2025-03-03T08:05:00Z"
+								},
+								{
+									"latitude": 41.407,
+									"longitude": 2.1705,
+									"timestamp": "2025-03-03T08:10:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 1,
+							"type": "Emergency",
+							"description": "User has fallen",
+							"status": "Pending",
+							"date": "2025-03-03T14:30:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 1,
+					"name": "Carlos Pérez",
+					"roles": ["Tracked"],
+					"supervisors_id": [2, 3],
+					"representatives_id": [4],
+					"location": { "latitude": 41.40338, "longitude": 2.17403 },
+					"network_status": "OK",
+					"connection_type": "4G",
+					"last_connection": "2025-03-03T14:30:00Z",
+					"last_location_updated": "2025-03-03T14:29:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Home",
+						"coordinates": { "latitude": 41.40338, "longitude": 2.17403 },
+						"radius_meters": 600
+					},
+					"usual_routes": [
+						{
+							"id": 101,
+							"name": "Home-Work Route",
+							"coordinates": [
+								{
+									"latitude": 41.40338,
+									"longitude": 2.17403,
+									"timestamp": "2025-03-03T08:00:00Z"
+								},
+								{
+									"latitude": 41.40538,
+									"longitude": 2.17203,
+									"timestamp": "2025-03-03T08:05:00Z"
+								},
+								{
+									"latitude": 41.407,
+									"longitude": 2.1705,
+									"timestamp": "2025-03-03T08:10:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 1,
+							"type": "Emergency",
+							"description": "User has fallen",
+							"status": "Pending",
+							"date": "2025-03-03T14:30:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 5,
+					"name": "Laura Méndez",
+					"roles": ["Tracked"],
+					"supervisors_id": [2, 3],
+					"representatives_id": [4],
+					"location": { "latitude": 41.405, "longitude": 2.176 },
+					"network_status": "OK",
+					"connection_type": "WiFi",
+					"last_connection": "2025-03-03T10:15:00Z",
+					"last_location_updated": "2025-03-03T10:14:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Work",
+						"coordinates": { "latitude": 41.405, "longitude": 2.176 },
+						"radius_meters": 750
+					},
+					"usual_routes": [
+						{
+							"id": 102,
+							"name": "Work-Home Route",
+							"coordinates": [
+								{
+									"latitude": 41.405,
+									"longitude": 2.176,
+									"timestamp": "2025-03-03T07:30:00Z"
+								},
+								{
+									"latitude": 41.407,
+									"longitude": 2.178,
+									"timestamp": "2025-03-03T07:35:00Z"
+								},
+								{
+									"latitude": 41.4085,
+									"longitude": 2.18,
+									"timestamp": "2025-03-03T07:40:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 2,
+							"type": "Emergency",
+							"description": "Gas leak at home",
+							"status": "Pending",
+							"date": "2025-03-03T10:00:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 6,
+					"name": "Jorge Castillo",
+					"roles": ["Tracked"],
+					"supervisors_id": [2, 3],
+					"representatives_id": [4],
+					"location": { "latitude": 41.402, "longitude": 2.178 },
+					"network_status": "OFFLINE",
+					"connection_type": "4G",
+					"last_connection": "2025-03-02T23:00:00Z",
+					"last_location_updated": "2025-03-02T22:55:00Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Park",
+						"coordinates": { "latitude": 41.402, "longitude": 2.178 },
+						"radius_meters": 200
+					},
+					"usual_routes": [
+						{
+							"id": 103,
+							"name": "Park-Home Route",
+							"coordinates": [
+								{
+									"latitude": 41.402,
+									"longitude": 2.178,
+									"timestamp": "2025-03-02T18:00:00Z"
+								},
+								{
+									"latitude": 41.4,
+									"longitude": 2.175,
+									"timestamp": "2025-03-02T18:05:00Z"
+								},
+								{
+									"latitude": 41.399,
+									"longitude": 2.173,
+									"timestamp": "2025-03-02T18:10:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 3,
+							"type": "Emergency",
+							"description": "Person with Alzheimer's disease, has forgotten home location",
+							"status": "Pending",
+							"date": "2025-03-02T22:50:00Z"
+						}
+					]
+				},
+				{
+					"id": 2,
+					"name": "Ana López",
+					"roles": ["Supervisor"],
+					"phone": "+34 600 123 456",
+					"email": "lopeza@gmailc.om",
+					"assigned_users": [1, 5, 6],
+					"network_status": "OFFLINE",
+					"last_connection": "2025-03-02T20:15:00Z"
+				},
+				{
+					"id": 3,
+					"name": "Mario Gómez",
+					"roles": ["Supervisor"],
+					"phone": "+34 600 123 456",
+					"email": "gomezm@gmailc.om",
+					"assigned_users": [1, 5, 6],
+					"network_status": "OK",
+					"last_connection": "2025-03-03T15:00:00Z"
+				},
+				{
+					"id": 4,
+					"name": "Elena Ruiz",
+					"roles": ["Representative", "Supervisor"],
+					"phone": "+34 600 123 456",
+					"email": "ruize@gmailc.om",
+					"assigned_users": [1, 5, 6],
+					"assigned_supervisors": [2, 3],
+					"network_status": "OK",
+					"last_connection": "2025-03-03T12:45:00Z"
+				},
+				{
+					"user_id": 10,
+					"name": "Carlos López",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 41.38, "longitude": 2.19 },
+					"network_status": "OK",
+					"connection_type": "4G",
+					"last_connection": "2025-03-03T18:30:00Z",
+					"last_location_updated": "2025-03-03T18:29:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Barcelona Central",
+						"coordinates": { "latitude": 41.38, "longitude": 2.19 },
+						"radius_meters": 1000
+					},
+					"usual_routes": [
+						{
+							"id": 107,
+							"name": "Home-Park Route",
+							"coordinates": [
+								{
+									"latitude": 41.38,
+									"longitude": 2.19,
+									"timestamp": "2025-03-03T06:00:00Z"
+								},
+								{
+									"latitude": 41.382,
+									"longitude": 2.1915,
+									"timestamp": "2025-03-03T06:10:00Z"
+								},
+								{
+									"latitude": 41.384,
+									"longitude": 2.1925,
+									"timestamp": "2025-03-03T06:15:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 9,
+							"type": "Medical",
+							"description": "User feeling dizzy",
+							"status": "In Progress",
+							"date": "2025-03-03T18:45:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 11,
+					"name": "Lucía García",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 41.375, "longitude": 2.18 },
+					"network_status": "OK",
+					"connection_type": "WiFi",
+					"last_connection": "2025-03-03T19:00:00Z",
+					"last_location_updated": "2025-03-03T18:59:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Shopping District",
+						"coordinates": { "latitude": 41.375, "longitude": 2.18 },
+						"radius_meters": 500
+					},
+					"usual_routes": [
+						{
+							"id": 108,
+							"name": "Home-Shopping Center Route",
+							"coordinates": [
+								{
+									"latitude": 41.375,
+									"longitude": 2.18,
+									"timestamp": "2025-03-03T07:30:00Z"
+								},
+								{
+									"latitude": 41.3765,
+									"longitude": 2.1815,
+									"timestamp": "2025-03-03T07:40:00Z"
+								},
+								{
+									"latitude": 41.378,
+									"longitude": 2.183,
+									"timestamp": "2025-03-03T07:45:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 10,
+							"type": "Medical",
+							"description": "User feeling weak",
+							"status": "Pending",
+							"date": "2025-03-03T19:15:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 12,
+					"name": "David Ramírez",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 41.3805, "longitude": 2.192 },
+					"network_status": "OK",
+					"connection_type": "4G",
+					"last_connection": "2025-03-03T19:30:00Z",
+					"last_location_updated": "2025-03-03T19:29:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Metro Station",
+						"coordinates": { "latitude": 41.3805, "longitude": 2.192 },
+						"radius_meters": 300
+					},
+					"usual_routes": [
+						{
+							"id": 109,
+							"name": "Home-Metro Route",
+							"coordinates": [
+								{
+									"latitude": 41.3805,
+									"longitude": 2.192,
+									"timestamp": "2025-03-03T08:00:00Z"
+								},
+								{
+									"latitude": 41.3815,
+									"longitude": 2.193,
+									"timestamp": "2025-03-03T08:10:00Z"
+								},
+								{
+									"latitude": 41.383,
+									"longitude": 2.194,
+									"timestamp": "2025-03-03T08:15:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 11,
+							"type": "Medical",
+							"description": "User has a headache",
+							"status": "In Progress",
+							"date": "2025-03-03T19:45:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 13,
+					"name": "Ana Torres",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 41.379, "longitude": 2.1935 },
+					"network_status": "OK",
+					"connection_type": "WiFi",
+					"last_connection": "2025-03-03T20:00:00Z",
+					"last_location_updated": "2025-03-03T19:59:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Park Area",
+						"coordinates": { "latitude": 41.379, "longitude": 2.1935 },
+						"radius_meters": 700
+					},
+					"usual_routes": [
+						{
+							"id": 110,
+							"name": "Home-Park Route",
+							"coordinates": [
+								{
+									"latitude": 41.379,
+									"longitude": 2.1935,
+									"timestamp": "2025-03-03T10:00:00Z"
+								},
+								{
+									"latitude": 41.3805,
+									"longitude": 2.1945,
+									"timestamp": "2025-03-03T10:10:00Z"
+								},
+								{
+									"latitude": 41.382,
+									"longitude": 2.1955,
+									"timestamp": "2025-03-03T10:15:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 12,
+							"type": "Medical",
+							"description": "User has stomach pain",
+							"status": "Pending",
+							"date": "2025-03-03T20:15:00Z"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "Group B",
+			"users": [
+				{
+					"user_id": 7,
+					"name": "Sofia Fernández",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 40.41678, "longitude": -3.70379 },
+					"network_status": "OFFLINE",
+					"connection_type": "WiFi",
+					"last_connection": "2025-03-03T16:00:00Z",
+					"last_location_updated": "2025-03-03T15:59:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "City Center",
+						"coordinates": { "latitude": 40.41678, "longitude": -3.70379 },
+						"radius_meters": 1000
+					},
+					"usual_routes": [
+						{
+							"id": 104,
+							"name": "Home-City Center Route",
+							"coordinates": [
+								{
+									"latitude": 40.41678,
+									"longitude": -3.70379,
+									"timestamp": "2025-03-03T09:00:00Z"
+								},
+								{
+									"latitude": 40.41778,
+									"longitude": -3.70279,
+									"timestamp": "2025-03-03T09:10:00Z"
+								},
+								{
+									"latitude": 40.419,
+									"longitude": -3.701,
+									"timestamp": "2025-03-03T09:15:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 6,
+							"type": "Medical",
+							"description": "User has difficulty breathing",
+							"status": "In Progress",
+							"date": "2025-03-03T16:30:00Z"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "Group C",
+			"users": [
+				{
+					"user_id": 8,
+					"name": "Martín Sánchez",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 40.73061, "longitude": -73.935242 },
+					"network_status": "OFFLINE",
+					"connection_type": "4G",
+					"last_connection": "2025-03-03T17:00:00Z",
+					"last_location_updated": "2025-03-03T16:59:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Home",
+						"coordinates": { "latitude": 40.73061, "longitude": -73.935242 },
+						"radius_meters": 500
+					},
+					"usual_routes": [
+						{
+							"id": 105,
+							"name": "Home-Store Route",
+							"coordinates": [
+								{
+									"latitude": 40.73061,
+									"longitude": -73.935242,
+									"timestamp": "2025-03-03T10:00:00Z"
+								},
+								{
+									"latitude": 40.73161,
+									"longitude": -73.933242,
+									"timestamp": "2025-03-03T10:05:00Z"
+								},
+								{
+									"latitude": 40.733,
+									"longitude": -73.931,
+									"timestamp": "2025-03-03T10:10:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 7,
+							"type": "Accident",
+							"description": "User fell off a bicycle",
+							"status": "Pending",
+							"date": "2025-03-03T17:30:00Z"
+						}
+					]
+				},
+				{
+					"user_id": 9,
+					"name": "Rosa González",
+					"roles": ["Tracked"],
+					"supervisors_id": [5, 6],
+					"representatives_id": [8],
+					"location": { "latitude": 41.3784, "longitude": 2.1914 },
+					"network_status": "OK",
+					"connection_type": "WiFi",
+					"last_connection": "2025-03-03T18:00:00Z",
+					"last_location_updated": "2025-03-03T17:59:50Z",
+					"Observations": "",
+					"trust_zone": {
+						"name": "Hospital",
+						"coordinates": { "latitude": 41.3784, "longitude": 2.1914 },
+						"radius_meters": 800
+					},
+					"usual_routes": [
+						{
+							"id": 106,
+							"name": "Hospital-Home Route",
+							"coordinates": [
+								{
+									"latitude": 41.3784,
+									"longitude": 2.1914,
+									"timestamp": "2025-03-03T07:30:00Z"
+								},
+								{
+									"latitude": 41.3804,
+									"longitude": 2.1924,
+									"timestamp": "2025-03-03T07:40:00Z"
+								},
+								{
+									"latitude": 41.382,
+									"longitude": 2.193,
+									"timestamp": "2025-03-03T07:45:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 8,
+							"type": "Medical",
+							"description": "User has difficulty walking",
+							"status": "Pending",
+							"date": "2025-03-03T18:15:00Z"
+						}
+					]
+				}
+			]
+		}
+	]
+}
