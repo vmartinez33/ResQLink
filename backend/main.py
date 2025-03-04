@@ -5,6 +5,7 @@ from sqlmodel import select
 from backend.database import create_db_and_tables
 from backend.dependencies import SessionDep
 from backend.models import Group, SupervisorUserBase, User
+from backend.routers import geolocation
 
 
 async def lifespan(app: FastAPI):
@@ -30,6 +31,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(geolocation.router)
 
 
 @app.get("/")
