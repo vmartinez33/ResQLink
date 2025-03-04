@@ -2,7 +2,10 @@ from fastapi import APIRouter
 
 from backend.dependencies import NetworkAsCodeClientDep
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/geolocation",
+    tags=["geolocation"],
+)
 
 
 @router.get("/location")
