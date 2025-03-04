@@ -18,11 +18,9 @@ async def recive_notification(
     print(notification.model_dump_json())
     if authorization == "Bearer " + os.getenv("AUTHORIZATION_TOKEN"):
         if "connectivity-disconnected" in notification.type:
-            # send_telegram_notification("Device disconnected from the network")
-            pass
+            send_telegram_notification("Device disconnected from the network")
         elif "connectivity-data" in notification.type:
-            # send_telegram_notification("Device connected to the network")
-            pass
+            send_telegram_notification("Device connected to the network")
         
         return {"status": "ok"}
     else:
