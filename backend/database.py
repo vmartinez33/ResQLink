@@ -82,7 +82,7 @@ def populate_database():
         session.commit()
         
         # Create areas
-        area1 = Area(tracked_user_id=tracked_user1.id, longitude=60.252, latitude=25.227, radius=10_000)
+        area1 = Area(tracked_user_id=tracked_user1.id, longitude=2.1505, latitude=41.374023, radius=2000)
         session.add(area1)
         session.commit()
         

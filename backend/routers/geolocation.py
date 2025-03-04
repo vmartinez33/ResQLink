@@ -25,12 +25,12 @@ async def get_location(
     return {"longitude": location.longitude, "latitude": location.latitude}
 
 
-@router.get("/check-area/{user_id}")
+@router.get("/check-area")
 async def get_location(
     session: SessionDep,
-    client: NetworkAsCodeClientDep,
-    user_id: int
+    client: NetworkAsCodeClientDep
 ):
+    user_id = 3
     statement = select(User).where(User.id == user_id)
     result = session.exec(statement)
     user = result.one()
@@ -44,12 +44,16 @@ async def get_location(
         return Response(status_code=404)
     
     area = areas[0]
+    print(area)
     
-    my_device = client.devices.get("device@testcsp.net")
+    my_device = client.devices.get(phone_number="+34659197711")
     result = my_device.verify_location(
-        longitude=area.longitude,
-        latitude=area.latitude,
+        longitude=2.1485395,
+        latitude=41.3643733,
         radius=area.radius,
         max_age=3600
     )
-    return {"result": result.result_type}
+    
+    result_boolean = True if result.result_type == "TRUE" else False
+    
+    return { "result": result_boolean }
