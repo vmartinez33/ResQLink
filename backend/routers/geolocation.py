@@ -3,6 +3,7 @@ from sqlmodel import select
 
 from backend.dependencies import NetworkAsCodeClientDep, SessionDep
 from backend.models import Location, User
+from telegram import send_telegram_notification
 
 router = APIRouter(
     prefix="/geolocation",
@@ -55,5 +56,8 @@ async def get_location(
     )
     
     result_boolean = True if result.result_type == "TRUE" else False
+    
+    if result_boolean == False:
+        send_telegram_notification("User exited the trusted area")
     
     return { "result": result_boolean }
