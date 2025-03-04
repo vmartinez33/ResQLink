@@ -22,7 +22,7 @@ async def get_location(
     session.add(location_db)
     session.commit()
 
-    return location_db
+    return {"longitude": location.longitude, "latitude": location.latitude}
 
 
 @router.get("/check-area/{user_id}")
