@@ -18,6 +18,13 @@ def get_session():
 
 def populate_database():
     with Session(engine) as session:
+        # Drop all tables
+        # session.exec("DROP TABLE IF EXISTS group_supervisor")
+        # session.exec("DROP TABLE IF EXISTS supervisor_user")
+        # session.exec("DROP TABLE IF EXISTS user")
+        # session.exec("DROP TABLE IF EXISTS group")
+        # session.exec("DROP TABLE IF EXISTS organization")
+        
         # Create organizations
         org1 = Organization(name="Org1", country="Country1", phone="123456")
         session.add(org1)
