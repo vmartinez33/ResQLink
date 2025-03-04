@@ -16,6 +16,7 @@ async def get_location(
     location = my_device.location()
     return {"device": "device@testcsp.net", "longitude": location.longitude, "latitude": location.latitude}
 
+
 @router.get("/check-area")
 async def get_location(
     client: NetworkAsCodeClientDep
