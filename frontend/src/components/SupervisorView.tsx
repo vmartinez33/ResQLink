@@ -11,15 +11,23 @@ import {
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { UserAvatar } from './UserAvatar';
 import { CircleAlert, MapPin } from 'lucide-react';
-import { getAllAlerts } from '@/services/alert.service';
+import { createAlert, getAllAlerts } from '@/services/alert.service';
+import { Button } from './ui/button';
+import { checkArea, isInsideArea } from '@/services/location.service';
+import toast from 'react-hot-toast';
 
-const SupervisorView = ({ organization }) => {
+const SupervisorView = ({ organization, userLocation, userArea }) => {
+	console.log({ g: organization.groups });
+
 	const [groups, setGroups] = useState(
 		organization.groups.map((group) => ({
 			...group,
 			users: group.users.map((user) => ({
 				...user,
+				location: user.name === 'nokia_user' ? userLocation : user.location,
+				trust_zone: user.name === 'nokia_user' ? userArea : user.trust_zone,
 				focused: false,
+				outside: false,
 				image:
 					user.image ||
 					`https://i.pravatar.cc/300?img=${Math.floor(Math.random() * 70) + 1}`,
@@ -42,6 +50,19 @@ const SupervisorView = ({ organization }) => {
 					user.user_id === userId
 						? { ...user, focused: true }
 						: { ...user, focused: false }
+				),
+			}))
+		);
+	};
+
+	const setOutside = (isOutside) => {
+		setGroups((prevGroups) =>
+			prevGroups.map((group) => ({
+				...group,
+				users: group.users.map((user) =>
+					user.name === 'nokia_user'
+						? { ...user, outside: isOutside }
+						: { ...user, outside: false }
 				),
 			}))
 		);
@@ -76,6 +97,25 @@ const SupervisorView = ({ organization }) => {
 		}
 
 		return Object.keys(changes).length > 0 ? changes : null;
+	};
+
+	const handleCheckArea = async (user) => {
+		setFocus(user.user_id);
+		const isUserInArea = await isInsideArea(
+			{
+				lat: user.location.latitude,
+				lng: user.location.longitude,
+			},
+			{
+				center: {
+					lat: user.trust_zone.coordinates.latitude,
+					lng: user.trust_zone.coordinates.longitude,
+				},
+				radius: user.trust_zone.radius_meters,
+			}
+		);
+		console.log({ user });
+		console.log({ isUserInArea });
 	};
 
 	const fetchAlerts = useCallback(async () => {
@@ -156,6 +196,10 @@ const SupervisorView = ({ organization }) => {
 		}
 	}, []);
 
+	useEffect(() => {
+		console.log({ userLocation });
+	}, [userLocation]);
+
 	// Log whenever alerts state changes
 	useEffect(() => {
 		if (alerts.length > 0) {
@@ -179,6 +223,81 @@ const SupervisorView = ({ organization }) => {
 			clearInterval(intervalId);
 		};
 	}, [fetchAlerts]);
+
+	async function checkArea(user) {
+		console.log('area');
+
+		const isInAreaRes = await fetch('https://yuvi.es/resqlink/api/geolocation/check-area');
+		const isInArea = await isInAreaRes.json();
+		console.log({ isInArea });
+		if (isInArea.result) {
+			toast('The user is inside the trust area!');
+			setOutside(false);
+		} else {
+			const newAlert = await createAlert({
+				userId: user.id,
+				alert_type: 'medium_priority',
+				alert_message: 'User exited the trust area',
+				longitude: userLocation.longitude,
+				latitude: userLocation.latitude,
+			});
+			setOutside(true);
+		}
+		return isInArea;
+	}
+
+	async function checkAreaMock(e) {
+		e.preventDefault();
+
+		let clicks = 'one';
+
+		if (e.detail) {
+			clicks = e.detail;
+		}
+
+		console.log(clicks);
+
+		if (clicks > 1) {
+			await createAlert({
+				userId: 'nokia_test_id',
+				alert_type: 'medium_priority',
+				alert_message: 'User exited the trust area',
+				longitude: userLocation.longitude,
+				latitude: userLocation.latitude,
+			});
+
+			setOutside(true);
+		} else {
+			setOutside(false);
+		}
+
+		console.log(clicks);
+	}
+
+	useEffect(() => {
+		// async function checkArea() {
+		// 	const isInAreaRes = await fetch('https://yuvi.es/resqlink/api/geolocation/check-area');
+		// 	const isInArea = await isInAreaRes.json();
+		// 	console.log({ isInArea });
+		// 	if (isInArea.result) {
+		// 		setOutside(false);
+		// 	} else {
+		// 		setOutside(true);
+		// 	}
+		// 	return isInArea;
+		// }
+		// // Set isMounted to true on component mount
+		// isMounted.current = true;
+		// // Set up the initial fetch
+		// checkArea();
+		// // Set up polling interval (every 1 second as in your code)
+		// const intervalId = setInterval(checkArea, 1000);
+		// // Cleanup function
+		// return () => {
+		// 	isMounted.current = false;
+		// 	clearInterval(intervalId);
+		// };
+	}, []);
 
 	return (
 		<>
@@ -213,9 +332,24 @@ const SupervisorView = ({ organization }) => {
 														<p className='font-semibold'>{user.name}</p>
 														<div className='flex-1 flex justify-end'>
 															<NetworkStatus
-																status={user.network_status}
+																status={
+																	user.outside
+																		? 'DISCONNECTED'
+																		: user.network_status
+																}
 															/>
 														</div>
+														<Button
+															onClick={() => checkArea(user)}
+															// onClick={checkAreaMock}
+															style={{
+																width: 'auto',
+																padding: '4px',
+																cursor: 'pointer',
+															}}
+														>
+															<MapPin />
+														</Button>
 													</div>
 												);
 											})}

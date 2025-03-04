@@ -9,6 +9,57 @@
 			"name": "Group A",
 			"users": [
 				{
+					"user_id": "nokia_test_id",
+					"name": "nokia_user",
+					"roles": ["Tracked"],
+					"supervisors_id": [2, 3],
+					"representatives_id": [4],
+					"location": { "latitude": 41.37538, "longitude": 2.15403 },
+					"network_status": "OK",
+					"connection_type": "4G",
+					"last_connection": "2025-03-03T14:30:00Z",
+					"last_location_updated": "2025-03-03T14:29:50Z",
+					"Observations": "",
+					"image": "https://i.pravatar.cc/300?img=30",
+					"trust_zone": {
+						"name": "Home",
+						"coordinates": { "latitude": 41.39538, "longitude": 2.16403 },
+						"radius_meters": 600
+					},
+					"usual_routes": [
+						{
+							"id": 101,
+							"name": "Home-Work Route",
+							"coordinates": [
+								{
+									"latitude": 41.40338,
+									"longitude": 2.17403,
+									"timestamp": "2025-03-03T08:00:00Z"
+								},
+								{
+									"latitude": 41.40538,
+									"longitude": 2.17203,
+									"timestamp": "2025-03-03T08:05:00Z"
+								},
+								{
+									"latitude": 41.407,
+									"longitude": 2.1705,
+									"timestamp": "2025-03-03T08:10:00Z"
+								}
+							]
+						}
+					],
+					"events": [
+						{
+							"id": 1,
+							"type": "Emergency",
+							"description": "User has fallen",
+							"status": "Pending",
+							"date": "2025-03-03T14:30:00Z"
+						}
+					]
+				},
+				{
 					"user_id": "2134",
 					"name": "test_user",
 					"roles": ["Tracked"],

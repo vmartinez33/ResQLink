@@ -34,7 +34,7 @@ const Map = ({ userGroups, setFocus }) => {
 	useEffect(() => {
 		if (mapRef.current && focusedUser) {
 			const map = mapRef.current;
-			map.flyTo([focusedUser.location.latitude, focusedUser.location.longitude], 15);
+			map.flyTo([focusedUser.location.latitude, focusedUser.location.longitude]);
 		}
 	}, [focusedUser]);
 

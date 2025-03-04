@@ -10,31 +10,32 @@ const BtnSendAlert = ({ user }) => {
 	const [description, setDescription] = useState('');
 	const [alert, setAlert] = useState(null);
 
-	const handleSendAlert = async (e) => {
-		e.preventDefault();
+	const handleSendAlert = async (alert_type) => {
 		setPopoverOpen(true);
 		console.log({ userLocation });
 		console.log({ user });
 		const newAlert = await createAlert({
 			userId: user.id,
+			alert_type,
+			alert_message: `${alert_type === 'high_priority' ? 'High' : 'Low'} priority alert`,
 			longitude: userLocation[0],
 			latitude: userLocation[1],
 		});
 
 		setAlert(newAlert.data);
 
-		setTimeout(async () => {
-			if (!description) {
-				const updatedAlert = await updateAlert({
-					...newAlert.data,
-					alert_type: 'high_priority',
-				});
+		// setTimeout(async () => {
+		// 	if (!description) {
+		// 		const updatedAlert = await updateAlert({
+		// 			...newAlert.data,
+		// 			alert_type,
+		// 		});
 
-				if (updatedAlert.success) {
-					setAlert(updatedAlert.data);
-				}
-			}
-		}, 5000);
+		// 		if (updatedAlert.success) {
+		// 			setAlert(updatedAlert.data);
+		// 		}
+		// 	}
+		// }, 5000);
 	};
 
 	useEffect(() => {
@@ -58,15 +59,28 @@ const BtnSendAlert = ({ user }) => {
 	}, [description]);
 
 	return (
-		<div className='relative'>
+		<div className='relative flex flex-col items-center'>
 			<Button
-				disabled={popoverOpen}
+				disabled={alert && alert.alert_type === 'medium_priority'}
 				type='button'
-				onClick={handleSendAlert}
-				className='destructive cursor-pointer'
-				style={{ opacity: popoverOpen ? '.75' : '1' }}
+				onClick={() => handleSendAlert('medium_priority')}
+				className='bg-yellow-600 hover:bg-yellow-600 cursor-pointer'
+				style={{ opacity: alert && alert.alert_type === 'medium_priority' ? '.75' : '1' }}
 			>
-				{popoverOpen ? 'Alert sent successfully' : 'Send Alert'}
+				{alert && alert.alert_type === 'medium_priority'
+					? 'Alert sent successfully'
+					: 'Send Alert'}
+			</Button>
+			<Button
+				disabled={alert && alert.alert_type === 'high_priority'}
+				type='button'
+				onClick={() => handleSendAlert('high_priority')}
+				className='bg-red-600 hover:bg-red-600 cursor-pointer'
+				style={{ opacity: alert && alert.alert_type === 'high_priority' ? '.75' : '1' }}
+			>
+				{alert && alert.alert_type === 'high_priority'
+					? 'S.O.S sent successfully'
+					: 'S.O.S'}
 			</Button>
 			{popoverOpen && (
 				<div className='alert-popover absolute top-[-12px] -translate-y-full bg-white w-full p-2 rounded-md'>
@@ -78,7 +92,6 @@ const BtnSendAlert = ({ user }) => {
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}
 						type='text'
-						name='description'
 						placeholder='Give us more details'
 					/>
 				</div>

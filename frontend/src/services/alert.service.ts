@@ -1,6 +1,8 @@
+const BASE_API_URL = `${import.meta.env.VITE_BASE_API_URL}/alerts`;
+
 export async function getAllAlerts() {
 	try {
-		const alerts = await fetch('http://localhost:5000/alerts');
+		const alerts = await fetch(BASE_API_URL);
 		const alertsJSON = await alerts.json();
 
 		return { success: true, data: alertsJSON };
@@ -9,18 +11,24 @@ export async function getAllAlerts() {
 	}
 }
 
-export async function createAlert({ userId, longitude, latitude, alertMessage = null }) {
+export async function createAlert({
+	userId,
+	longitude,
+	latitude,
+	alert_message = null,
+	alert_type,
+}) {
 	try {
 		const newAlert = {
 			user_id: userId,
 			longitude,
 			latitude,
-			alert_type: 'medium_priority', // Default value
-			alert_message: alertMessage,
+			alert_type,
+			alert_message,
 			created_at: new Date().toISOString(),
 		};
 
-		const response = await fetch('http://localhost:5000/alerts', {
+		const response = await fetch(BASE_API_URL, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -59,7 +67,7 @@ export async function updateAlert({
 			updated_at: new Date().toISOString(), // Include a timestamp for the update
 		};
 
-		const response = await fetch(`http://localhost:5000/alerts/${id}`, {
+		const response = await fetch(`${BASE_API_URL}/${id}`, {
 			method: 'PUT', // Using PUT to update the alert
 			headers: {
 				'Content-Type': 'application/json',
@@ -73,6 +81,24 @@ export async function updateAlert({
 
 		const data = await response.json();
 		return { success: true, data };
+	} catch (error) {
+		return { success: false, message: error.message };
+	}
+}
+
+export async function deleteAllAlerts() {
+	try {
+		const alertsResponse = await fetch(BASE_API_URL);
+		const alerts = await alertsResponse.json();
+
+		// Delete each alert individually
+		const deletePromises = alerts.map((alert) =>
+			fetch(`${BASE_API_URL}/${alert.id}`, { method: 'DELETE' })
+		);
+
+		await Promise.all(deletePromises);
+
+		return { success: true, message: 'All alerts deleted successfully.' };
 	} catch (error) {
 		return { success: false, message: error.message };
 	}
